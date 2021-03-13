@@ -1,0 +1,779 @@
+%% This is template for a LaTeX/Beamer presentation
+%% See also beameruserguide.pdf
+
+\documentclass{beamer}
+
+%% Choose a presentation style.
+%% See e.g. \url{https://deic-web.uab.cat/~iblanes/beamer_gallery/index.html} for an overview.
+\mode<presentation>
+{
+  %\usetheme{Warsaw}
+  %\usetheme{Copenhagen}
+  \usetheme{Luebeck}
+  \setbeamercovered{transparent}
+}
+
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+
+\newtheorem{stelling}{Stelling}
+\newtheorem*{opmerking}{Opmerking}
+
+\title[CDISC]{CDISC}
+\subtitle{CDISC introduction}
+
+\author[Jan Hartstra]{Frans Sollie\inst{1} \and Jan Hartstra\inst{1}}
+\institute[PRA international] % (optional, but mostly needed)
+{
+   \inst{1}%
+   Biostatistics Department \\
+   Data support \\
+   EDS \\
+   PRA international 
+}
+
+\date[CDISC introduction]{09 July 2008 / CDISC introduction}
+\subject{CDICS introduction}
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+%\AtBeginSubsection[]
+%{
+%  \begin{frame}<beamer>
+%    \frametitle{Outline}
+%    \tableofcontents[currentsection,currentsubsection]
+%  \end{frame}
+%}
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+
+%\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+  \frametitle{Outline}
+  \tableofcontents
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+%-----------------------------------------------------------------------------------------------
+
+\section{Goals}
+
+\begin{frame}
+  \frametitle{What are our goals?}
+
+  \begin{itemize}
+		\item What is CDISC?
+		\item What should I know about CDISC?
+		\item What is CDASH and what should I know about CDASH?
+		\item What is SDTM and what should I know about SDTM?
+		\item What is ADaM and what should I know about ADaM?
+  \end{itemize}
+\end{frame}
+
+\note{I think the terms should be familiar to everyone working in clinical trials.
+What everyone should know about the terms depends on their roles. 
+Project managers do not need an in-dept knowledge of for instance SDTM, but they should learn the consequences 
+to know how it can effect timelines and bugdets.
+The introduction is for everyone.
+Partly based on other PRA CDISC presentations (Quoted)}
+
+%-----------------------------------------------------------------------------------------------
+
+\section{Introduction}
+
+\subsection[CDISC]{CDISC}
+
+\begin{frame}
+  \frametitle{What is CDISC?}
+  \alert{CDISC} = Clinical Data Interchange Standards Consortium
+  
+	\begin{definition}
+	\alert{CDISC} is a global, open, multidisciplinary, non-profit organization that has established standards to support the acquisition, exchange, submission and archive of clinical research data and metadata. The CDISC mission is to develop and support global, platform-independent data standards that enable information system interoperability to improve medical research and related areas of healthcare.  CDISC standards are \emph{vendor-neutral}, \emph{platform-independent} and \emph{freely available} via the CDISC website. 
+	\end{definition}
+  
+  \begin{itemize}
+		\item PRA is a corporate CDISC sponsor
+  \end{itemize}
+\end{frame}
+  
+\note{CDISC (Clinical Data Interchange Standards Consortium) is een open multidisciplinaire non-profit organisatie, die een gelijknamige industrie standaard voor het uitwisselen van klinische data ontwikkeld. [to support the electronic acquisition, exchange, submission and archiving of clinical trials data and metadata for medical and biopharmaceutical product development. The mission of CDISC is to lead the development of global, vendor-neutral, platform independent standards to improve data quality and accelerate product development in our industry] [acknowledged by the FDA].
+
+}
+%	\note{Biometry, the active pursuit of biological knowledge by quantitative methods." - R.A. Fisher, 1947}
+
+\begin{frame}
+  \frametitle{A short history of CDISC?}
+  \begin{itemize}
+		\item Late 1997 - Started as a Volunteer group 
+		\item Summer 1998 - Invited to form DIA SIAC 
+		\item Feb 2000 - formed an Independent, non-profit organization 
+		\item Dec 2001 - Global participation 
+		\item July 21, 2004, SDTM was selected as the standard specification for submitting tabulation data to the
+		 FDA
+		\item Near future, FDA will accept only CDISC compliant data submissions
+  \end{itemize}
+\end{frame}
+
+\subsection[CDASH]{CDASH}
+
+\begin{frame}
+  \frametitle{What is CDASH?}
+
+	\alert{CDASH} = Clinical Data Acquisition Standards Harmonization
+  CDASH working on industry standard CRFs
+%	\begin{definition}
+%	\end{definition}
+  
+  \begin{itemize}
+		\item Standard for CRFs
+		\item Recently published standards seems to add little to CDISC standards 
+		\item Cf. Module 2 of the EDS (NL) CDISC training
+  \end{itemize}
+\end{frame}
+
+\note{CDASH is dus met name van belang voor data managers en database programmers (de designers).
+CDASH zal uitgebeid worden behandeld in module 2.}
+
+\subsection[Standards]{Standards}
+
+\begin{frame}
+  \frametitle{Why use (CDISC) standards?}
+
+  \begin{itemize}
+		\item We are used to a standard: our \emph{SASDS} inhouse standard
+		\item Standards are generally more efficient
+		\item CDISC: easy data exchange with sponsors and other CRO's
+		\item CDISC adopted by FDA
+		\item "Off-the-shelf standards will allow PRA to be more competitive with data management costs"
+		\item The FDA will eventually \alert{require} data to be submitted in CDISC-compliant standards
+		\item Standardizing analysis datasets is intended to make review and assessment of analysis more consistent
+  \end{itemize}
+\end{frame}
+
+\note{Why should we use standards and in particullar the CDISC standards.
+Within PRA EDS NL we already have a more or less standard database format.}
+
+%-----------------------------------------------------------------------------------------------
+
+\subsection[Models]{Models}
+
+\begin{frame}
+  \frametitle{What is a Model (within CDISC)?}
+
+	\begin{definition}
+	A \alert{data model} is an unambiguous, formally stated, expression of items, the relationship among items, 
+	and the structure of the data in a certain problem area or context of use. 
+    A data model uses symbolic conventions agreed to represent content so that content does not lose its 
+    intended meaning when communicated.
+	\end{definition}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Which models are defined by CDISC?}
+
+  \begin{itemize}
+		\item Operational Data Model (ODM)
+		\item Laboratory (LAB)
+		\item \alert{Study Data Tabulation Model (SDTM)}
+		\item \alert{Analysis Data Model (ADaM)}
+		\item Protocol Representation Model (PRM)
+		\item Trial Design Model (TDM)
+  \end{itemize}
+\end{frame}
+
+\note{Een aantal van deze modellen zal ik nog wat meer toelichten.
+2 van deze modellen zullen zelfs vrij uitgebreid aan bod komen, zowel in deze cursus als in apart modules.}
+
+\begin{frame}
+  \frametitle{What is the ODM?}
+
+  \begin{itemize}
+		\item "Defines the format of the transport file for data as it is exported and imported between
+		      data management systems"
+		\item "By default, it's not in SAS and it's not useful for analysis purposes"
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{What is the SDTM? (1)}
+
+  \begin{itemize}
+  		\item STDM is already stable
+  		\item Version 1.2 (34 pages)
+  		\item Implementation guide version 3.1.2 (298 pages)
+		\item SDTM is designed for backward compatibility!
+		\item "Cost for this is the same as any conversion to client standards would be"
+		\item "If you provide SDTM datasets you DO NOT need to provide the FDA with Listings or Patient Profiles"
+		\item "The FDA can generate these from SDTM viewing tools"
+		\item "Don't waste time making listings that \emph{look} like the CRF"
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{What is the SDTM? (2)}
+
+  \begin{itemize}
+		\item "Originally the model was called Submission Data Standards (SDS) and the team of people 
+		       was also called SDS"
+		\item "Model name changed to SDTM in June 2004"
+		  \begin{itemize}
+				\item Reflects broader scope
+				\item Applies only to data tabulations
+				\item Applies to data in both human and animal studies
+		  \end{itemize}
+		\item "The team of people is still called SDS"
+  \end{itemize}
+\end{frame}
+
+%SDTM is very stable
+%Any changes will be backward compatible
+%Planned yearly updates of Implementation Guide
+%New domain models posted as available
+%Drug Accountability (DA)
+%Protocol Deviations (DV)
+%And others
+
+\begin{frame}
+  \frametitle{What is the ADaM?}
+
+  \begin{itemize}
+%		\item "Whenever we produce raw data in SDTM, we should produce our analysis datasets following the ADaM guidelines"
+%		\item "If we are creating SDTM-formatted raw datasets on a study, there should be no additional cost for ADaM-formatted analysis datasets"
+		\item Analysis-ready derived datasets
+		\item \emph{"One PROC Away"} principle
+		\item "All fields needed for a table should be present in the dataset (e.g. merging of population information should be the 
+		      last step in creating the analysis dataset, not the first step in the TFL program)"
+      \item Based on SDTM data!      
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{What is the Protocol Representation Model (PRM)?}
+	\begin{itemize}
+		\item The PRM relatively new (v1.0: 29 April 2009)
+		\item Standard for Clincal Study Protocols	
+		\item Defines a structured, \emph{computable} presentation of procotols
+		\item Based on BRIDG (\url{http://www.bridgmodel.org/})
+		\item UML (Unified Modeling Language)?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Who does what?}
+	\begin{tabular}{|p{18mm}|p{18mm}|p{18mm}|p{18mm}|p{18mm}|}
+	\hline       & ODM  & SDTM & ADaM & Client specific SASDS \\ 
+	\hline AP    & No   & Yes  & Yes  & Yes \\ 
+	\hline DP    & Yes  & Yes  & No   & Yes \\ 
+	%\hline Costs & Free & Custom conversion & as regular analysis & Custom conversion \\
+   \hline \\ 
+	\end{tabular}    
+\end{frame}
+
+\subsection[Additional concepts]{Additional concepts}
+
+\subsubsection[metadata]{metadata}
+
+\begin{frame}
+	\frametitle{What is metadata?}
+	\begin{definition}
+		\alert{Metadata} is data about data
+	\end{definition}
+	\begin{itemize}
+		\item For SDTM, it is information about the content, context, structure, and purpose of a database 
+		\item Useful in interpreting data 
+		\item SDTM defines specific metadata content to accompany data in a submission to the FDA
+		\item Data Definition Table (DDTs)
+		\item Define.xml
+	\end{itemize}
+\end{frame}
+
+%-----------------------------------------------------------------------------------------------
+
+\subsubsection[Controlled terminology]{Controlled terminology}
+
+\begin{frame}
+	\frametitle{What is Controlled terminology?}
+	\begin{definition}
+		\alert{Controlled terminology} or \emph{vocabulary} is a finite set of values that represent
+		 the only allowed values for a data item. 
+		 These values may be codes, text, or numeric.
+	\end{definition}
+	SDTM defines 2 types of "controlled terminology"
+	\begin{enumerate}
+		\item Published externally (e.g. MedDRA terms)
+		\item Sponsor defined (e.g. standard code list)
+      \item CDISC controlled terminology
+	\end{enumerate}
+\end{frame}
+
+\note{Controlled terminology/text should be used instead of arbitrary number codes to reduce ambiguity for submission reviewers. Recommended that controlled terminology be represented in upper case Exceptions:
+Coding dictionaries, Units and Other special cases}
+
+%-----------------------------------------------------------------------------------------------
+
+\section[SDTM]{SDTM}
+
+\begin{frame}
+  \frametitle{SDTM}
+	
+  \begin{itemize}
+  		\item Version 1.2 (34 pages)
+  		\item Implementation guide version 3.1.2 (298 pages)
+  \end{itemize}
+\end{frame}
+
+\note{We gaan nu kort kijken naar een aantal aspecten van SDTM - noem het maar de theorie of filosofie achter de het model.}
+
+\begin{frame}
+  \frametitle{Domains}
+	\begin{definition}
+		A \alert{domain} is a collection of observations with a topic-specific commonality about each subject in a 
+		clinical investigation.
+	\end{definition}
+	
+  \begin{itemize}
+  		\item CDISC classifies domains
+  \end{itemize}
+\end{frame}
+
+%NOTE: CDISC classifies domains. 
+%For example, the Interventions class is a domain that captures investigational treatments,
+%therapeutic treatments, and surgical procedures that are intentionally
+%administered to the subject (usually for therapeutic purposes) either as
+%specified by the study protocol (e.g., exposure), coincident with the study
+%assessment period (e.g., concomitant medications), or other substances selfadministered
+%by the subject (such as alcohol, tobacco, or caffeine). 
+
+%The Events class captures occurrences or incidents independent of planned study
+%evaluations occurring during the trial (e.g., adverse events or
+%disposition) or prior to the trial (e.g., medical history). 
+
+%The Findings class captures the observations resulting
+%from planned evaluations such as observations made during a physical
+%examination, laboratory tests, ECG testing, and sets of individual questions
+%listed on questionnaires.
+
+\begin{frame}
+  \frametitle{Domain Classes}
+  \begin{itemize}
+  	\item \emph{Interventions} Class (intentionally administered treatments, e.g. exposure, concomitant medication)
+  	\item \emph{Events Class} (ccurrences or incidents independent of planned study
+			evaluations occurring during the trial, e.g. Adverse Events, Medical History)
+	\item \emph{Findings Class} (planned evaluations, e.g. ECGs, vital signs, laboratory tests) 
+	\item \emph{Special-purpose domains}
+	\item \emph{Trial design domains}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Special-purpose domains}
+  \begin{itemize}
+	\item Demographics - DM 
+	\item Comments - CO 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Interventions domains}
+  \begin{itemize}
+	\item Concomitant Medications - CM 
+	\item Exposure - EX 
+	\item Substance Use - SU 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Events domains}
+  \begin{itemize}
+	\item Adverse Events - AE 
+	\item Disposition - DS 
+	\item Medical History - MH 
+	\item Protocol Deviations - DV 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Findings domains}
+  \begin{itemize}
+	\item Drug Accountability - DA 
+	\item ECG Tests - EG 
+	\item Inclusion/Exclusion Exceptions - IE 
+	\item Laboratory Tests - LB 
+%	\item Microbiology Specimens - MB 
+	\item Questionnaires - QS 
+%	\item Microbiology Susceptibility - MS 
+	\item Physical Examinations - PE 
+	\item Pharmacokinetics Concentrations - PC 
+	\item Subject Characteristics - SC 
+	\item Pharmacokinetics Parameters - PP 
+	\item Vital Signs - VS 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Trial Design Domains}
+  \begin{itemize}
+	\item Trial Elements - TE 
+	\item Trial Arms - TA 
+	\item Trial Visits - TV 
+	\item Subject Elements - SE 
+	\item Subject Visits - SV 
+	\item Trial Inclusion/Exclusion Criteria  TI 
+	\item Trial Summary - TS 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Special-purpose relationship datasets}
+  \begin{itemize}
+	\item Supplemental Qualifiers - SUPPQUAL (SUPPVS, SUPPDM)
+	\item Relate Records - RELREC (AE vs. CM)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Variables}
+	Variables are classified into 4 major roles
+  \begin{description}
+		\item [Identifier variables] Identify study, subject, domain, or sequence number of the record
+		\item [Topic variables] Specify the focus of the observation (e.g. lab test name)
+		\item [Timing variables] Specify observation timing (e.g. start/end dates)
+		\item [Qualifier variables] Include additional illustrative text or numeric values that describe results or 
+					additional traits of the observation
+		%\item [Rule variables]
+  \end{description}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Qualifier variables}
+  	Qualifier variables can be devided into
+  	\begin{itemize}
+		\item \emph{Grouping} Qualifiers (e.g. --CAT, --SCAT)
+		\item \emph{Result} Qualifiers (e.g. --ORRES, --STRESC)
+		\item \emph{Synonym} Qualifiers (e.g. --DECOD, --TEST)
+		\item \emph{Record} Qualifiers (e.g. AGE, SEX, RACE, --POS)
+		\item \emph{Variable} Qualifiers (e.g. --DOSU, --ORRESU, --ORNRHI, --ORNRLO)
+  	\end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Specifications (Data Definition Tables)}
+  \begin{itemize}
+		\item Variable \emph{name} (max. 8 characters!)
+		\item Descriptive variable \emph{label} (max. 40 characters!)
+		\item Variable data \emph{type} (\textbf{char}aracter or \textbf{num}eric)
+		\item Variable \emph{origin} (CRF, derived)
+		\item Variable \emph{role} (category: identifier, topic, timing, qualifiers or rule)
+		\item \emph{Comments}
+  \end{itemize}
+\end{frame}
+
+%\begin{frame}
+%  \frametitle{Variables}
+%	
+%  \begin{description}
+%		\item 
+%		\item []
+%		\item []
+%		\item []
+%  \end{description}
+%\end{frame}
+%
+%\begin{frame}
+%  \frametitle{The General Observation Classes}
+%  \begin{itemize}
+%		\item Interventions (observation class)
+%		\item Events
+%		\item Findings
+%		\item Special purpose
+%  \end{itemize}
+%\end{frame}
+%
+%\begin{frame}
+%  \frametitle{Standard Event Domains}
+%  \begin{itemize}
+%		\item Adverse Events (AE)
+%		\item Disposition (DS)
+%		\item Medical History (MH)
+%		\item Deviations (DV)
+%  \end{itemize}
+%\end{frame}
+%
+%\begin{frame}
+%  \frametitle{Findings}
+%  \begin{itemize}
+%		\item Observations resulting from planned evaluations
+%		\item Measurements, tests and questions
+%		\item Likely that \~80\% of data could be findings
+%		\item One record per finding result or measurement
+%  \end{itemize}
+%\end{frame}
+%
+%\begin{frame}
+%  \frametitle{Standard Findings Domains}
+%  \begin{itemize}
+%		\item ECG Test Results (EG)
+%		\item Inclusion/Exclusion Criteria (IE)
+%		\item Laboratory Test Results (LB)
+%		\item Physical Examinations (PE)
+%		\item Questionnaires (QS)
+%		\item Subject Characteristics (SC)
+%		\item Vital Signs (VS)
+%		\item Drug Accountability (DA)
+%  \end{itemize}
+%\end{frame}
+%
+%\begin{frame}
+%  \frametitle{Special Purpose Domains}
+%  	Not Interventions, Events or Findings
+%  \begin{itemize}
+%		\item Demographics (DM)
+%		\item Comments (CO)
+%		\item Supplemental Qualifiers
+%		\item Dataset and Record Relationships (RELREC)
+%		\item Trial Design Model Domains
+%  \end{itemize}
+%\end{frame}
+
+\subsection[ISO 8601]{ISO 8601}
+
+\begin{frame}
+	\frametitle{What is ISO 8601 (1)?}
+
+	\begin{definition}
+		\alert{ISO 8601} is an international standard for date and time representations issued by the
+		      International Organization for Standardization (ISO). 
+	\end{definition}
+	
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{What is ISO 8601 (1)?}
+
+	SDTM version 3.1.2 includes representation of dates/times according to the ISO 8601 standard
+	
+	\begin{enumerate}
+		\item Character representation
+		\item YYYY-MM-DD\alert{T}hh:mm:ss
+		\item Dashes to separate date parts, colons to separate time parts 
+				(Not required by ISO 8601, but required under SDTM to improve readability)
+		\item Incomplete date/times (right truncation)
+		\item Exclusion of unknown portion from string
+	\end{enumerate}
+\end{frame}
+%Duration variables should only be supplied if the start date/time and end date/time are not provided
+%Format is:
+%PnYnMnDTnHnMnS or PnW
+%Where n is an integer
+%Negative durations are prefixed with a - (ex. PT5M  = previous 5 minutes)
+
+\begin{frame}
+  \frametitle{Study day}
+
+  \begin{itemize}
+		\item The variable --DY is the relative study day that an observation occurred
+		\item Incremented by 1 for each day after study reference start (RFSTDTC in DM domain)
+		\item There is no Day 0 in SDTM
+		\item First day of study participation is Day 1
+		\item Day before study particpation is Day -1
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{EDS SDTM implementation}
+  
+  \begin{itemize}
+		\item EDS CDISC implementation working group
+		\item EDS CDISC implementation guide
+		\item Oracle Clinical Global library implementation (DM)
+  \end{itemize}
+\end{frame}
+
+%See SDTM IG v3.1.1 page 28 for derivation details
+%Most analysis assumes start of study participation is Day 0
+%SDTM does not have Day 0
+%To avoid confusion, PRA default is to not calculate xxDY or VISITDY variables
+
+\subsection[Legacy DB]{Legacy Databases}
+\begin{frame}
+	\frametitle{Legacy Databases}
+
+	Converting databases (datasets) from an old format (e.g. PBR standard SAS datasets - SASDS)
+	to CDISC compliant datasets.
+	
+	\begin{itemize}
+		\item EDT based on CDISC specs
+		\item Basis for AP?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Want to know more on SDTM?}
+	
+	SDTM is cover in dept in \emph{module 3}
+\end{frame}
+
+%-----------------------------------------------------------------------------------------------
+
+\section{Trial Design Model}
+
+\begin{frame}
+  \frametitle{Trial Design Model (TDM)}
+
+  Part of the SDTM specifications
+
+  \begin{itemize}
+	  \item Planned elements, arms, visits
+	  \begin{itemize}
+  		\item (Planned) trial elements
+  		\item Trial arms
+  		\item Trial visits
+	  \end{itemize}
+	  \item Trial inclusion/exclusion criteria
+	  \item Trial summary information
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Trial Design Model (TDM)}
+
+  Part of the SDTM specifications
+
+  \begin{itemize}
+	  \item Elements can be entered into a spreadsheet
+      \item Maybe created in OC (by biostatistician?)
+  \end{itemize}
+\end{frame}
+
+%-----------------------------------------------------------------------------------------------
+
+%\section{ADaM}
+%
+%\begin{frame}
+%  \frametitle{ADaM}
+%
+%  \begin{itemize}
+%  	\item Current version: 2.0
+%	\item "PRA can produce CDISC-compliant deliverables to meet both the client and regulatory agency needs. "
+%	\item "Understand from the client what CDISC-compliant deliverables they expect."
+%  \end{itemize}
+%\end{frame}
+ 
+%SDTM and ADaM were designed with input from FDA
+%Use of CDISC SDTM and ADaM will meet current regulatory requirements
+%FDA strongly recommends submitting data using SDTM and ADaM, but does not yet require compliance
+%No other regulatory agencies have required use of SDTM or ADaM to date
+ 
+%PRA can produce CDISC-compliant deliverables to meet both the client and regulatory agency needs.  
+%Some CRF design changes may appear to facilitate mapping data to CDISC SDTM fields
+
+
+%\begin{frame}
+%	\frametitle{Key ADaM concepts}
+%	
+%	\begin{itemize}
+%		\item Analysis-ready derived datasets
+%		\item \emph{"One PROC Away"} principle
+%		\item "All fields needed for a table should be present in the dataset (e.g. merging of population information should be the 
+%		      last step in creating the analysis dataset, not the first step in the TFL program)"
+%		\item "We need to be keeping most original fields (i.e. \emph{adding} derived fields, not \emph{substituting} derived fields)
+%	\end{itemize}
+%\end{frame}
+
+%Consequences for Listings
+%Many would need to use derived data as source
+%Highlights the fact that under ADaM, we need to be keeping most original fields (i.e. adding derived fields, not substituting derived fields)
+
+%\begin{frame}
+%	\frametitle{Subject Level Analysis Dataset (ADSL)}
+%	
+%	\begin{itemize}
+%		\item The one ADaM defined dataset that is always required to be created
+%		\item A one record per subject dataset
+%	\end{itemize}
+%\end{frame}
+
+%\begin{frame}
+%	\frametitle{ADaM Derived Variable Categories}
+%	
+%	\begin{itemize}
+%		\item Identifiers
+%		\item Population Flags
+%		\item Date Variables
+%		\item Study Day Variables
+%		\item Visit Variables
+%		\item Flag Variables
+%		\item Code Variables
+%		\item Treatment Variables
+%	\end{itemize}
+%\end{frame}
+
+%\begin{frame}
+%	\frametitle{Want to know more on ADaM?}
+%	
+%	ADaM will be covered in dept in \emph{module 3}.
+%\end{frame}
+
+%-----------------------------------------------------------------------------------------------
+
+\section[Define]{Define}
+
+\begin{frame}
+	\frametitle{Define.pdf/Define.xml}
+	
+	\begin{itemize}
+		\item Define.pdf is a set of table that lists the datasets and the variables in them
+		\item Define.xml is the same information, but represented in XML 
+		\item Define.pdf is not machine-readable, but Define.xml is
+	\end{itemize}
+\end{frame}
+
+%PRA Publishing group or AP can help create either define.pdf or define.xml
+
+%------------------------------------------------------------------------------
+
+\section{Take home messages}
+
+\begin{frame}
+  \frametitle{Take home messages}
+
+	\begin{itemize}
+      \item CDISC standards are here to stay
+      \item (Eventually) we will benefit from the CDISC standards
+	\end{itemize}
+\end{frame}  
+
+%\section{Training record}
+%
+%\begin{frame}
+%  \frametitle{Training record}
+%  
+%  	Report time to:
+%	\begin{itemize}
+%      \item PRA Institute  Core Tech Data Mgt - Train or
+%      \item PRA Institute  - Core Tech Ana Rep - Train
+%	\end{itemize}
+%	Be sure to add to your training record:
+%	\begin{itemize}
+%		\item INTRNLxxxx General CDISC Training EDS NL?
+%	\end{itemize}
+%	
+%\end{frame}  
+
+\end{document}
+
+%------------------------------------------------------------------------------
+% EOF
+%------------------------------------------------------------------------------
+
+
+
